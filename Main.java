@@ -117,11 +117,11 @@ public class Main {
 								
 								if (countAuthor > 0) {
 									
-									System.out.println("Indique el ID del autor que desea modificar:");
+//									System.out.println("Indique el ID del autor que desea modificar:");
+//									
+//									int authorId = sc.nextInt();
 									
-									int authorId = sc.nextInt();
-									
-									Function.updateAuthor(authors, authorId);
+									Function.updateAuthor(authors);
 									
 								} else {
 									
@@ -328,6 +328,12 @@ public class Main {
 									
 								}
 																
+								break;
+								
+							case 5: // Menu anterior
+								
+								System.out.println("\nVolviendo al menu anterior...\n");
+								
 								break;
 						
 							default:

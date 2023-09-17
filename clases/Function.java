@@ -116,50 +116,46 @@ public class Function {
 	 * @param authors -> Arrya de tipo Author con la lista de autores
 	 * @param idAuthor -> ID del autor que se desea modificar
 	 */
-	public static void updateAuthor(Author[] authors, int idAuthor) {
+	public static void updateAuthor(Author[] authors) {
 		
 		boolean authorFound = false;
-		
-		int count = 0;
-		
-		while(!authorFound && count < authors.length) { // Mientras no sea distinto el bucle seguira iterando
-			
-			if (authors[count].getId() == idAuthor) {
-				
-				System.out.println("Autor con ID " + idAuthor + " encontrado con exito.\n");
-				
-				System.out.println("\tIndica el nuevo nombre del autor:");
-				authors[count].setName(sc.nextLine()); 
-				
-				System.out.println("\tIndica el nuevo apellido del autor:");
-				authors[count].setSurname(sc.nextLine());
-				
-				System.out.println("\tIndica la nueva nacionalidad del nuevo autor:");
-				authors[count].setNationality(sc.nextLine());
-				
-				System.out.println("\tIndica la nueva fecha de nacimiento del nuevo autor:");
-				authors[count].setDateAuthor(sc.nextLine());
-				
-				System.out.println("Autor actualizado con exito.\n");
-				
-				System.out.println(authors[count]);
-				
-				authorFound = true; // Cambio el valor de la variable para poder salir del bucle
-			
-			} else {
-				count++; // Sumamos uno al contador
-			}
-				
-			if(authors[count] == null || count == authors.length) {
-				
-				System.out.println("El ID introducido no existe. Por favor vuelva a intentarlo.");
-				
-				count = 0;
-				
-			}
-			
-		}
-		
+	    int count = 0;
+	    
+	    System.out.println("Indique el ID del autor que desea modificar:");
+	    int authorId = sc.nextInt();
+	    sc.nextLine(); // Vaciar el buffer
+	    
+	    while (!authorFound && count < authors.length) {
+	    	
+	        if (authors[count] != null && authors[count].getId() == authorId) {
+	            System.out.println("Autor con ID " + authorId + " encontrado con éxito.\n");
+	            System.out.println("\tIndica el nuevo nombre del autor:");
+	            authors[count].setName(sc.nextLine());
+	            
+	            System.out.println("\tIndica el nuevo apellido del autor:");
+	            authors[count].setSurname(sc.nextLine());
+	            
+	            System.out.println("\tIndica la nueva nacionalidad del nuevo autor:");
+	            authors[count].setNationality(sc.nextLine());
+	            
+	            System.out.println("\tIndica la nueva fecha de nacimiento del nuevo autor:");
+	            authors[count].setDateAuthor(sc.nextLine());
+	            
+	            System.out.println("Autor actualizado con éxito.\n");
+	            System.out.println(authors[count]);
+	            
+	            authorFound = true;
+	        }
+	        
+	        count++;
+	        
+	    }
+	    
+	    if (!authorFound) {
+	        System.out.println("El autor con ID " + authorId + " no existe. Por favor, vuelva a intentarlo.");
+	    }				
+
+					
 	}
 	
 	/**
@@ -261,17 +257,15 @@ public class Function {
 			System.out.println("Introduce el ID de la editorial que deseas modificar:");
 			
 			int editorialIdUser = sc.nextInt();
-			
 			sc.nextLine(); // Vacio el buffer
 			
 			boolean editorialFound = false;
-			
 			int count = 0;
 			
 			while(!editorialFound && count < editorials.length) { // Mientras editorialFound no sea distinta de false y count sea menor a la longitud del array el bucle seguira iterando
 				
 				
-				if(editorials[count].getId() == editorialIdUser) { // Si el idIntroducido por el usuario es igual ha alguno de los que contiene el array
+				if(editorials[count] != null && editorials[count].getId() == editorialIdUser) { // Si el idIntroducido por el usuario es igual ha alguno de los que contiene el array
 					
 					System.out.println("Editorial con ID " + editorialIdUser + " encontrado con exito.\n");
 
@@ -291,17 +285,13 @@ public class Function {
 					
 				} else {
 					count++; // Sumamos 1 al contador en cada iteracion					
-				}
-				
-				
-			if(editorials[count] == null || count == editorials.length) {
-				
-				System.out.println("El ID introducido no existe. Por favor vuelva a intentarlo.");
-				
-				count = 0;
+				}	
 				
 			}
+			
+			if(!editorialFound) {
 				
+				System.out.println("El ID introducido no existe. Por favor vuelva a intentarlo.");
 				
 			}
 			
@@ -355,16 +345,13 @@ public class Function {
 					count++; // Sumamos uno al contador
 
 				}
-				
-				
-			if(editorials[count] == null || count == editorials.length) {
+								
+			}
+			
+			if(!editorialFound) {
 				
 				System.out.println("El ID introducido no existe. Por favor vuelva a intentarlo.");
-				
-				count = 0;
-				
-			}
-				
+								
 			}
 			
 		} 
@@ -705,16 +692,14 @@ public class Function {
 				count++;
 			}
 			
-			
-			if(count == books.length - 1 || books[count] == null) { // Si el contador llega al mismo numero que la longitud del array
-				
-				count = 0; // Reinicio el contador
-				
-				System.out.println("El ID introducido no existe. Por favor vuelva a intentarlo.\n");
-				
-			}
-			
+						
 		}while(!foundBook && count < books.length - 1);
+		
+		if(!foundBook) {
+			
+			System.out.println("El ID introducido no existe. Por favor vuelva a intentarlo.");
+							
+		}
 		
 		return false;
 	}
