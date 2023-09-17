@@ -116,11 +116,7 @@ public class Main {
 							case 3: // Modificar Autor
 								
 								if (countAuthor > 0) {
-									
-//									System.out.println("Indique el ID del autor que desea modificar:");
-//									
-//									int authorId = sc.nextInt();
-									
+																		
 									Function.updateAuthor(authors);
 									
 								} else {
@@ -234,7 +230,6 @@ public class Main {
 									countEditorial--; // Restamos uno al contador
 								}
 								
-								
 								break;
 							
 							case 5: 	
@@ -280,7 +275,8 @@ public class Main {
 									
 								} else {
 									
-									System.out.println("\nDebes tener autores y editoriales registradas en el sistema.\n");
+									System.out.println("\nPara poder registrar libros:");
+									System.out.println("Debes tener autores y editoriales registradas en el sistema.\n");
 									
 								}
 															

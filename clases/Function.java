@@ -175,7 +175,7 @@ public class Function {
 		// Con un bucle busco si exite el id del autor
 		while(!authorFound && count < authors.length) {
 			
-			if (idAuthor == authors[count].getId()) {
+			if (authors[count] != null && idAuthor == authors[count].getId()) {
 				
 				authors[count].setId(-1);
 				authors[count].setName("");
@@ -186,23 +186,20 @@ public class Function {
 				System.out.println("Autor eliminado con exito.");
 				
 				authorFound = true; // Cambio el valor de la variable para poder salir del bucle
+				
 			} else {
 				
 				count++; // Sumamos uno a la variable
 				
 			}
 			
-			
-		if(authors[count] == null || count == authors.length) {
-			
-			System.out.println("El ID introducido no existe. Por favor vuelva a intentarlo.");
-			
-			count = 0;
-			
-		}
-			
 		}
 		
+		if(!authorFound) {
+			
+			System.out.println("El ID " + idAuthor + " introducido no existe. Por favor vuelva a intentarlo.");
+				
+		}
 		
 	}
 	
@@ -295,9 +292,10 @@ public class Function {
 				
 			}
 			
+		} else {
+				System.out.println("El sistema no contiene editoriales registradas.\n");
 		}
 	
-		System.out.println("El sistema no contiene editoriales registradas.\n");
 		
 		return false;
 
@@ -327,7 +325,7 @@ public class Function {
 			
 			while(!editorialFound && count < editorials.length) { // Mientras editorialFound no sea distinta de false y count sea menor a la longitud del array
 				
-				if(editorials[count].getId() == idEditorial) { // Si el id es igual a el id introducido por el usuario
+				if(editorials[count] != null && editorials[count].getId() == idEditorial) { // Si el id es igual a el id introducido por el usuario
 					
 					System.out.println("\nEditorial con ID " + idEditorial + " encontrado con exito.\n");
 					
@@ -354,9 +352,11 @@ public class Function {
 								
 			}
 			
-		} 
-			
-		System.out.println("El sistema no contiene editoriales registradas.\n");
+		} else {	
+		
+			System.out.println("El sistema no contiene editoriales registradas.\n");
+		
+		}
 		
 		return false;
 		
